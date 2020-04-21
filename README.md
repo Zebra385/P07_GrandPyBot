@@ -7,6 +7,9 @@
  py -m pip install -r requirements.txt
 ### On utilisera la version python 3.7.5 en 32 bits
 ## 3.Comment exécuter le programme?
-### Il faut commencer par
+### Lorsque le site sera hebergé sous hubotu il suffira de connaitre l'url 
+### du site
+### pour le développeur l'éxécution se fera sur la console via le fichier 
+### GrandPyBot.py 
 ### Puis, 
 ## C 
