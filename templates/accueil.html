@@ -5,6 +5,21 @@
     <title>LesitedeGrandPyBot</title>
 </head>
 <body>
+    <p>Pose moi ta question:</p>
+        <form action="" method="post">
+            <label for="msg">Votre message</label><br />
+            <textarea id="msg" name="msg"></textarea><br />
 
+
+            <input type="submit" value="Envoyer">
+        </form>
+    <p id="result"> rien </p>
+     <!-- Plugin JavaScript -->
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/affichage.js') }}"></script>
 </body>
 </html>
