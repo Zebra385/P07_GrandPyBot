@@ -1,24 +1,25 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
-import requests
+import requests, json
 
 
-class Question():
-    def __init__(self,question):
+class Question_Place():
+    def __init__(self, question):
         self.question = question
 
-    def cut(self):
-        return self.question.split()
 
-print('Bonjour, je suis papy robot, pose moi ta demande d adresse sous la ' \
-'forme : Salut GrandPy ! Est-ce que tu connais l adresse de ... ')
-question_a_papyrobot= input('pose ta question: ');
-question = Question(question_a_papyrobot)
-tableau_adresse = question.cut()
-site =tableau_adresse[11]
-print('tu recherche l adresse du site: ' + site )
 
-package_url = f'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={site}&inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo';
-r = requests.get(package_url);
-package_json_product = r.json();
-print('ladresse du site : ' + site +' est : ' + package_json_product['candidates'][0]['formatted_address']);
+    def send(self):
+        self.site = self.question.split()[10]
+        print(self.site)
+        package_url = f'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={self.site}&inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo';
+        r = requests.post(package_url)
+        print(r.json()['candidates'][0]['formatted_address'])
+        return r.json()
+        # package_json_product = r.json()
+        # return package_json_product
+
+
+
+
+

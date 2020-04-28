@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+
+    <!-- Required metadata tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Papy Bot.">
     <title>LesitedeGrandPyBot</title>
 </head>
 <body>
 <p>Bonjour, je suis papy robot, pose moi ta demande d adresse sous la forme :</br> Salut GrandPy ! Est-ce que tu connais l adresse de ... '</p>
-    <form id="question" action="" method="get">
-        <textarea id="champ" type="text" name="nom"></textarea>
-        <input type="submit" value="Valider">
+    <form>
+        <div class="form-group">
+            <label for="champ"><strong>Enter your question:</strong></label>
+            <textarea id="champ"  ></textarea>
+            <button type="submit" id="question" >Envoyer question</button></br>
+        </div>
     </form>
     <p id="result"> rien </p>
      <!-- Plugin JavaScript -->

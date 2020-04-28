@@ -1,29 +1,38 @@
 
-var request = new XMLHttpRequest();
-request.onreadystatechange = function() {
-    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-        var response = JSON.parse(this.responseText);
+$(function(){
+    var $f = $('#question');
+    alert('coucou je suis dans le .js');
+    $f.on('click', function(e){
+        alert('recup quqetion');
+        e.preventDefault();
+        var question = $('#champ').val();
+        var $r = $('#result');
+        alert('tu recherche l adresse du site: ' + question );
+        var question_json= {'text':question,};
+        alert('en json' + question_json.text);
+        if (question !=""){
+            $.ajax({
+            url: '/find-site',
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            dataType: 'json',
+            data: JSON.stringify(question_json),
+            success: function(data){
+                alert('success' );
+                    //alert(ata[di].candidates[0].formatted_address);
+                    $r.text('l adresse du site est : ' +data.candidates[0].formatted_address);
+                    //$r.text= data[i].candidates[0].formatted_address;
+                    },
+            error: function(){
+                 alert('erreur recup data');
+            }
+            });
+        }
+        alert('sortie du POST');
 
-        alert ('ladresse du site : ' + site +' est : ' + response.candidates.formatted_address);
-
-    }
-};
+    });
+})
 
 
-var $f = $('#question');
-
-$f.on('submit', function(e){
-    var $r = $('#result');
-    e.preventDefault();
-
-    alert('changement');
-    var question = $('#champ').val();
-    alert('tu recherche l adresse du site: ' + question );
-    var site = question.split(" ")[10];
-
-    $r.text('tu recherche l adresse du site: ' + site );
-    var package_url = 'https://www.google.fr/maps/place/openclassrooms}';
-    request.open("GET", 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={site}&inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo');
-    request.send();
-
-});
