@@ -1,7 +1,7 @@
 
 $(function(){
     var $f = $('#question');
-    alert('coucou je suis dans le .js');
+
     $f.on('click', function(e){
         alert('recup quqetion');
         e.preventDefault();
@@ -9,14 +9,15 @@ $(function(){
         var $r = $('#result');
         var $r1 = $('#result1');
         var $r2 = $('#result2');
+        var $r3 = $('#result3');
+        var $r4 = $('#result4');
+        $r.text(question);
 
 
-
-        alert('tu recherche l adresse du site: ' + question );
         var question_json= {'text':question,};
         alert('en json' + question_json.text);
         question = question +"\n"
-        $r.text(question);
+
 
 
 
@@ -43,7 +44,7 @@ $(function(){
                     var img = document.createElement("img");
                     var center = 'center='+adresse;
                     var markers ='&markers=size:mid%7Ccolor:red%7CSan'+adresse;
-                    img.src = 'https://maps.googleapis.com/maps/api/staticmap?'+ center + '&zoom=12&size=600x300&maptype=roadmap' + markers +'&key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo';
+                    img.src = 'https://maps.googleapis.com/maps/api/staticmap?'+ center + '&zoom=12&size=400x200&maptype=roadmap' + markers +'&key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo';
 
 
                    $('#map').replaceWith(img);
@@ -55,6 +56,8 @@ $(function(){
             });
         }
         alert('sortie du POST');
+        $r3.text('Mais t ai-je déjà raconté l histoire de ce quartier qui m a vu en culottes courtes ?');
+        $r4.text('Blablabla,......');
 
     });
 })

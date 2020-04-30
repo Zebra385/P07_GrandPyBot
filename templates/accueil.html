@@ -6,32 +6,70 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Papy Bot.">
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body { background-color:#DDD; }
+        [class="form-result"] { margin-bottom: 10px; height: 200px;}
+        [class="form-group"] { margin-bottom: 10px; height: 100px;}
+        [class="affichage"] { margin-bottom: 10px; height: 300px;}
+        [id="champ"] { margin-bottom: 10px; height: 100px; width : 200 px;}
+    </style>
     <title>LesitedeGrandPyBot</title>
 </head>
 <body>
-<p>Bonjour, je suis papy robot, pose moi ta demande d adresse sous la forme :</br> Salut GrandPy ! Est-ce que tu connais l adresse de ... '</p>
-    <form>
-        <div class="form-group">
-            <label for="champ"><strong>Enter your question:</strong></label>
-            <textarea id="champ"  ></textarea>
-            <button type="submit" id="question" >Envoyer question</button></br>
+    <div class="container">
+        <header class="row">
+        <div class="col-lg-12">
+          MON ENTETE
         </div>
-    </form>
-    <p id="result">  </p>
-    <p id="result1">  </p>
-    <p id="result2"> </p>
-    <div id="map">
-			<!-- Ici s'affichera la carte -->
+        </header>
+        <div class="row">
+        <form class="col-lg-12">
+            <div class="form-result">
+                <p id="result">  </p>
+                <p id="result1">  </p>
+                <p id="result2"> </p>
+
+
+            </div>
+
+
+        </form>
+        <form class="col-lg-12">
+            <div class="affichage">
+                <div id="map"   >
+                    <img src="static/images/Fond_carte.jpg" alt="image_carte">
+                    <!-- Ici s'affichera la carte -->
+                 </div>
+                <p id="result3"> </p>
+                <p id="result4"> </p>
+            </div>
+        </form>
+        <form class="col-lg-12">
+            <div class="form-group">
+                <p>Bonjour, je suis papy robot, pose moi ta demande d adresse sous la forme :</br> Salut GrandPy ! Est-ce que tu connais l adresse de ... '</p>
+                <label for="champ"><strong>Enter your question:</strong></label>
+                <textarea id="champ"  ></textarea>
+                <button type="submit" id="question" >Envoyer question</button></br>
+            </div>
+        </form>
+
+         <!-- Plugin JavaScript -->
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/affichage.js') }}"></script>
+        <!-- sript clé d'utilisation de l' API Place de googlemaps-->
+        <!--script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo&callback=initMap"-->
+        <!--type="text/javascript"></script-->
+        </div>
+        <footer class="row">
+            <div class="col-lg-12">
+              Pied de page
+            </div>
+        </footer>
     </div>
-     <!-- Plugin JavaScript -->
-    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-
-
-    <script type="text/javascript" src="{{ url_for('static', filename='js/affichage.js') }}"></script>
-    <!-- sript clé d'utilisation de l' API Place de googlemaps-->
-    <!--script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo&callback=initMap"-->
-    <!--type="text/javascript"></script-->
 </body>
 </html>
