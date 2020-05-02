@@ -1,5 +1,6 @@
 
-$(function(){
+$(function()
+    {
     var $f = $('#question');
 
     $f.on('click', function(e){
@@ -33,9 +34,11 @@ $(function(){
             success: function(data){
                 alert('success' );
                     //alert(ata[di].candidates[0].formatted_address);
+
                     var lieu = data.candidates[0].name;
                     var adresse = data.candidates[0].formatted_address;
 
+                    var site_json ={'site':adresse,}
                     $r1.text('Bien sûr mon poussin ! La voici l adresse de '+ lieu + ': ' + adresse);
 
                     $r2.text(' Et je suis si gentils que je  l indique sur la carte ci dessous : ');
@@ -47,19 +50,42 @@ $(function(){
                     img.src = 'https://maps.googleapis.com/maps/api/staticmap?'+ center + '&zoom=12&size=400x200&maptype=roadmap' + markers +'&key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo';
 
 
-                   $('#map').replaceWith(img);
+                    $('#map').replaceWith(img);
+                    if (adresse != "")
+                                alert('on entre dans ajax adresse');
+                                {
+                                $.ajax({
+                                url: '/find-article',
+                                method: 'POST',
+                                headers: {
+                                'Content-Type': 'application/json'
+                                          },
+                                dataType: 'json',
+                                data: JSON.stringify(site_json),
+                                success: function(data){
+                                    alert('2ieme success' );
 
+                                        var article = data.query.pages[0].extract
+                                        $r4.text(article);
+                                                        },
+                                error: function(){
+                                    alert('erreur recup article');
+                                                }
+                                        });
+
+                                }
                     },
             error: function(){
-                 alert('erreur recup data');
+                 alert('erreur recup data1');
             }
             });
         }
-        alert('sortie du POST');
+        alert('sortie du premier POST');
         $r3.text('Mais t ai-je déjà raconté l histoire de ce quartier qui m a vu en culottes courtes ?');
-        $r4.text('Blablabla,......');
+
+
+
 
     });
-})
 
-
+    })
