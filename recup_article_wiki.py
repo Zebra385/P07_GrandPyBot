@@ -34,8 +34,6 @@ class Article_Wiki():
         """we def this function to find the page id of site wiki to the find adresse"""
         URL = "https://fr.wikipedia.org/w/api.php"
         self.site =self.get_site()
-        print ('le self.site est  :')
-        print(self.site)
         PARAMS = {
             "action": "query",
             "format": "json",
@@ -44,7 +42,6 @@ class Article_Wiki():
         }
         R = requests.post(url=URL, params=PARAMS)
         DATA = R.json()
-        print(' je suis dans le get_pageid')
         if DATA['query']['search'][0]['title'] == self.site:
             print(
                 "Your search page '" + self.site + "' exists on french Wikipedia")
@@ -70,9 +67,7 @@ class Article_Wiki():
 
         R2 = requests.get(url=URL, params=PARAMS2)
         DATA2 = R2.json()
-        #extract = DATA2['query']['pages'][str(self.pageid)]['extract']
-        #print(extract)
-        #return extract
-        print(DATA2)
-        return DATA2
+        extract = DATA2['query']['pages'][str(self.pageid)]['extract']
+
+        return extract
 

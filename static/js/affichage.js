@@ -60,12 +60,12 @@ $(function()
                                 headers: {
                                 'Content-Type': 'application/json'
                                           },
-                                dataType: 'json',
+                                dataType: 'text',
                                 data: JSON.stringify(site_json),
                                 success: function(data){
                                     alert('2ieme success' );
 
-                                        var article = data.query.pages[0].extract
+                                        var article = data
                                         $r4.text(article);
                                                         },
                                 error: function(){

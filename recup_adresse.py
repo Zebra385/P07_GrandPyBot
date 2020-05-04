@@ -11,9 +11,17 @@ class Question_Place():
 
     def send(self):
         self.site = self.question.split()[10]
-        print(self.site)
-        package_url = f'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input={self.site}&inputtype=textquery&fields=formatted_address,name,geometry&key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo';
-        r = requests.post(package_url)
+        """we def this function to find adresse"""
+        URL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json"
+
+        PARAMS = {
+            "input": self.site,
+            "inputtype": "textquery",
+            "fields": "formatted_address,name,geometry",
+            "key":'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
+        }
+        r = requests.post(url=URL, params=PARAMS)
+
         adr = r.json()['candidates'][0]['formatted_address']
         print(adr)
         return r.json()

@@ -22,7 +22,6 @@ def find_article():
     data = request.get_json()
     text_input2 = data['site']
     article =Article_Wiki(text_input2)
-
     retour = article.get_article()
     return retour
 
