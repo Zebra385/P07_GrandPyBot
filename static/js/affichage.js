@@ -4,6 +4,8 @@ $(function()
     var $f = $('#question');
 
     $f.on('click', function(e){
+
+
         alert('recup quqetion');
         e.preventDefault();
         var question = $('#champ').val();
@@ -17,12 +19,14 @@ $(function()
 
         var question_json= {'text':question,};
         alert('en json' + question_json.text);
-        question = question +"\n"
+
+
 
 
 
 
         if (question !=""){
+
             $.ajax({
             url: '/find-site',
             method: 'POST',
@@ -32,16 +36,21 @@ $(function()
             dataType: 'json',
             data: JSON.stringify(question_json),
             success: function(data){
-                alert('success' );
+                 alert('success' );
+
                     //alert(ata[di].candidates[0].formatted_address);
 
                     var lieu = data.candidates[0].name;
                     var adresse = data.candidates[0].formatted_address;
 
                     var site_json ={'site':adresse,}
-                    $r1.text('Bien sûr mon poussin ! La voici l adresse de '+ lieu + ': ' + adresse);
 
+                    alert('pousin');
+                    alert(lieu);
+                    alert(adresse);
+                    $r1.text('Bien sûr mon poussin ! La voici l adresse de '+ lieu + ': ' + adresse);
                     $r2.text(' Et je suis si gentils que je  l indique sur la carte ci dessous : ');
+                    $r3.text('Mais t ai-je déjà raconté l histoire de ce quartier qui m a vu en culottes courtes ?');
                     // on va inserer la carte
 
                     var img = document.createElement("img");
@@ -81,7 +90,8 @@ $(function()
             });
         }
         alert('sortie du premier POST');
-        $r3.text('Mais t ai-je déjà raconté l histoire de ce quartier qui m a vu en culottes courtes ?');
+
+
 
 
 

@@ -23,6 +23,7 @@ class Question_Place():
         r = requests.post(url=URL, params=PARAMS)
 
         adr = r.json()['candidates'][0]['formatted_address']
+        print('ladresse est:')
         print(adr)
         return r.json()
         # package_json_product = r.json()

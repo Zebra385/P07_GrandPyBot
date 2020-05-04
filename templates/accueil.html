@@ -6,70 +6,92 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Papy Bot.">
-    <link href="static/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-        body { background-color:#DDD; }
-        [class="form-result"] { margin-bottom: 10px; height: 200px;}
-        [class="form-group"] { margin-bottom: 10px; height: 100px;}
-        [class="affichage"] { margin-bottom: 10px; height: 300px;}
-        [id="champ"] { margin-bottom: 10px; height: 100px; width : 200 px;}
+    <link href="static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="static/css/tuto.css" rel="stylesheet"  type="text/css"/>
+     <style type="text/css">
+      body { background-color:#DDD; }
+    form{background-color:#DDD; }
+     [class*="col"] { background-color:#DDD }
+     div { background-color:#DDD; }
+     .form-result{ width: 100%;  padding-right: 15px;  padding-left: 15px; height : 250px;}
+     img, #map { max-width: 100%;height: auto;max-height : 100%;}
+
     </style>
-    <title>LesitedeGrandPyBot</title>
+
+    <title>Le sitede GrandPyBot par Zebra385</title>
 </head>
 <body>
     <div class="container">
         <header class="row">
         <div class="col-lg-12">
-          MON ENTETE
+            <div class="row">
+                <img class="col-lg-2 "src="static/images/tete_robot.jpg" alt="logo1">
+                <div class="col-lg-offset-2 col-lg-4"> GRAND PY BOT répond à  ta recherche d'adresse</div>
+                <img class="col-lg-offset-2 col-lg-2" src="static/images/tete_papy.jpg" alt="logo2">
+			</div>
+
         </div>
-        </header>
-        <div class="row">
-        <form class="col-lg-12">
+      </header>
+      <div class="row">
+          <form class="col-lg-12">
             <div class="form-result">
-                <p id="result">  </p>
-                <p id="result1">  </p>
-                <p id="result2"> </p>
-
-
+                <p id="result">...  </p>
+                <p id="result1">...  </p>
+                <p id="result2">... </p>
+                <p id="result3">... </p>
+                <p id="result4">... </p>
             </div>
+          </form>
+      </div>
 
-
-        </form>
-        <form class="col-lg-12">
-            <div class="affichage">
-                <div id="map"   >
-                    <img src="static/images/Fond_carte.jpg" alt="image_carte">
-                    <!-- Ici s'affichera la carte -->
+      <div class="row">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-12">
+                <p class="jumbotron">Bonjour, je suis papy robot, pose moi ta demande d adresse sous la forme :</br> Salut GrandPy ! Est-ce que tu connais l adresse de ... '</p>
+                </div>
+                <div class="col-lg-12">
+                     <div class="form_group">
+                        <label class="col-lg-12" for="champ"><strong>Pose ta question à GandPy Bot:</strong></label>
+                         <textarea class="col-lg-12" id="champ"  ></textarea>
+                         <div  class="col-lg-offset-7 col-lg-3"><button class="btn btn-primary btn-block" type="submit" id="question" data-loading-text="Chargement..."><span class="glyphicon glyphicon-ok-sign"></span>Envoyer question</button></div>
+                    </div>
                  </div>
-                <p id="result3"> </p>
-                <p id="result4"> </p>
-            </div>
-        </form>
-        <form class="col-lg-12">
-            <div class="form-group">
-                <p>Bonjour, je suis papy robot, pose moi ta demande d adresse sous la forme :</br> Salut GrandPy ! Est-ce que tu connais l adresse de ... '</p>
-                <label for="champ"><strong>Enter your question:</strong></label>
-                <textarea id="champ"  ></textarea>
-                <button type="submit" id="question" >Envoyer question</button></br>
-            </div>
-        </form>
-
-         <!-- Plugin JavaScript -->
-        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-
-
-        <script type="text/javascript" src="{{ url_for('static', filename='js/affichage.js') }}"></script>
-        <!-- sript clé d'utilisation de l' API Place de googlemaps-->
-        <!--script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo&callback=initMap"-->
-        <!--type="text/javascript"></script-->
+             </div>
         </div>
-        <footer class="row">
-            <div class="col-lg-12">
-              Pied de page
+
+        <div  class="col-lg-4" >
+            <img class="img-thumbnail" id="map" src="static/images/Fond_carte.jpg" alt="image_carte">
+        </div>
+      </div>
+
+
+
+      <footer class="row">
+          <div class="col-lg-12">
+            <div class="row">
+
+              <div class="col-lg-2 "><p>HOUCHE SERGE</p></div>
+              <div  class="col-lg-offset-2 col-lg-3"><a  href="https://github.com/Zebra385/P07_GrandPyBot.git">Lien-Github</a></div>
+              <div  class="col-lg-offset-2 col-lg-3"> <a  href="https://www.linkedin.com/in/sergehouche">LINKEDIN</a></div>
             </div>
-        </footer>
+
+            </div>
+      </footer>
     </div>
+    <!-- sript css-->
+    <!--script  href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet" type="text/css"/-->
+    <!--script  href="{{ url_for('static', filename='tuto.css') }}" rel="stylesheet" type="text/css"/-->
+    <!-- Plugin JavaScript -->
+    <!--script src="{{ url_for('static', filename='js/jquery.js') }}"></script-->
+    <!-- Bootstrap Core JavaScript -->
+     <script src="static/js/jquery.js"></script>
+
+    <script type="text/javascript" src="static/js/affichage.js"></script>
+    <script src="static/js/bootstrap.js"></script>
+    <!-- sript clé d'utilisation de l' API Place de googlemaps-->
+    <!--script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo&callback=initMap"-->
+    <!--type="text/javascript"></script-->
+
 </body>
 </html>
