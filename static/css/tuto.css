@@ -1,15 +1,19 @@
-body {
-  background-color:red;
-  padding-top: 10px;
-}
+body { background-image : url("static/images/neige.jpg");
+	background-attachment :  fixed;
+	background-repeat : no-repeat;
+	background-size : cover ;
+	}
 
+
+.form-result{ width: 100%;  padding-right: 15px;  padding-left: 15px; height : 250px;}
+img, #map { max-width: 100%;height: auto;max-height : 100%;}
 
 .container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-     background-color:red;
+     ;
 }
 @media (min-width: 768px) {
   .container {
@@ -25,9 +29,4 @@ body {
   .container {
     width: 1170px;
   }
-}
-img {
-display: block;
-max-width: 100%;
-height: auto;
 }
