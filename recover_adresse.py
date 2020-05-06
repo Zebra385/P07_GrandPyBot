@@ -4,13 +4,15 @@ import requests, json
 
 
 class Question_Place():
+    """We def this class to looking for adresse of the site"""
     def __init__(self, question):
         self.question = question
         self.site= self.recover_site()
 
 
     def recover_site(self):
-        """we def this function to find site"""
+        """we def this function to find site in the question"""
+        # we split the question
         array_question= self.question.split()
         lengh_array_question = len(array_question)
         i = 9
@@ -24,7 +26,7 @@ class Question_Place():
 
     def send(self):
         self.site = self.recover_site()
-        """we def this function to find adresse"""
+        """we def this function to find adresse with the API Place of google"""
         URL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json"
 
         PARAMS = {
@@ -35,11 +37,9 @@ class Question_Place():
         }
         r = requests.post(url=URL, params=PARAMS)
 
-        adr = r.json()['candidates'][0]['formatted_address']
-
+        # format of adresse adr = r.json()['candidates'][0]['formatted_address']
         return r.json()
-        # package_json_product = r.json()
-        # return package_json_product
+
 
 
 

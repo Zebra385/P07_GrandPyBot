@@ -1,52 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 
     <!-- Required metadata tags -->
     <meta charset="utf-8">
+    <!-- site responsive whit desactivate zoom-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Papy Bot.">
     <link href="static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="static/css/tuto.css" rel="stylesheet"  type="text/css"/>
 
      <style type="text/css">
-      body { background-image : url("static/images/neige.jpg");
-	background-attachment :  fixed;
-	background-repeat : no-repeat;
-	background-size : cover ; }
+        body { background-image : url("static/images/neige.jpg");
+        background-attachment :  fixed;
+        background-repeat : no-repeat;
+        background-size : cover ; }
+        .container{
+        background-color: rgba(0, 0, 0, 0.1)
+        }
+        .form-result{ width: 100%;  padding-right: 15px;  padding-left: 15px; height : 250px;}
+        img, #map { max-width: 100%;height: auto;max-height : 100%; }
+        header
+        {
+        background: url('static/images/separateur.png') repeat-x bottom;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        }
+        .jumbotron{
+        font-size: 1.2em;
+        }
+        #question-reponse{
+        background_color: white;
 
+        box-shadow: 6px 6px 6px black inset;
+        }
 
-
- .container{
- background-color: rgba(0, 0, 0, 0.1)
- }
-     .form-result{ width: 100%;  padding-right: 15px;  padding-left: 15px; height : 250px;}
-     img, #map { max-width: 100%;height: auto;max-height : 100%; }
-header
-{
-	background: url('static/images/separateur.png') repeat-x bottom;
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-}
-.jumbotron{
- font-size: 1.2em;
- }
- #question-reponse{
- background_color: white;
-
- box-shadow: 6px 6px 6px black inset;
-}
-
-#question{
-    display: block;
-    }
-#question_chargement{
-    display: none;
-    }
-#titre{
-text-shadow: 2px 2px 4px black;
-}
+        #question{
+        display: block;
+        }
+        #question_chargement{
+        display: none;
+        }
+        #titre{
+        text-shadow: 2px 2px 4px black;
+        }
+        a{
+        color: blue;
+        }
     </style>
 
     <title>Le site de GrandPyBot par Zebra385</title>
@@ -54,83 +55,73 @@ text-shadow: 2px 2px 4px black;
 <body>
     <div class="container">
         <header class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <img class="col-lg-2 "src="static/images/tete_robot_demi.jpg" alt="logo1">
-                <div id="titre" class="col-lg-8"> <h1></br>GRAND PY BOT </br>répond à  ta recherche d'adresse</h1></div>
-                <img class="col-lg-2" src="static/images/tete_papy_demi.jpg" alt="logo2">
-			</div>
-
-        </div>
-      </header>
-      <div class="row">
-          <span class="border border-primary"></span>
-          <div class="col-lg-12">
-          <section id="question-reponse" >
-                <textarea  id="champ_question_reponse" class="form-result" ></textarea>
-                <!--p id="result">...  </p>
-                <p id="result1">...  </p>
-                <p id="result2">... </p>
-                <p id="result3">... </p>
-                <p id="result4">... </p-->
-
-          </section>
-          </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-8">
-            <div class="row">
-                <div class="col-lg-12">
-                <p class="jumbotron">Bonjour, je suis papy robot, pose moi ta demande d'adresse sous la forme :</br> Salut GrandPy ! Est-ce que tu connais l'adresse de ... '</p>
+            <div class="col-lg-12">
+                <div class="row">
+                    <img class="col-lg-2 "src="static/images/tete_robot_demi.jpg" alt="logo1">
+                    <div id="titre" class="col-lg-8"> <h1></br>GRAND PY BOT </br>répond à  ta recherche d'adresse</h1></div>
+                    <img class="col-lg-2" src="static/images/tete_papy_demi.jpg" alt="logo2">
                 </div>
-                <div class="col-lg-12">
-                     <div class="form_group">
-                        <label class="col-lg-12" for="champ"><strong>Pose ta question à GandPy Bot:</strong></label>
-                         <textarea class="col-lg-12" id="champ"  ></textarea>
-                         <div  class="col-lg-offset-7 col-lg-4">
-                             <button class="btn btn-primary btn-block" type="button" id="question" ><span class="glyphicon glyphicon-ok-sign"></span>Envoyer question</button>
-                             <button class= "btn btn-primary" id="question_chargement" type= "button" disabled > <span class= "spinner-border spinner-border-sm" role= "status" aria-hidden= "true" ></span> <span class= "sr-only" > Loading... </span> </button> <button class= "btn btn-primary" id="question_chargement" type= "button" disabled >  chargement... </button>
 
-</div>
-
-                     </div>
-                 </div>
-             </div>
+            </div>
+        </header>
+        <div class="row">
+            <span class="border border-primary"></span>
+            <div class="col-lg-12">
+                <section id="question-reponse" >
+                    <textarea  id="champ_question_reponse" class="form-result" ></textarea>
+                </section>
+            </div>
         </div>
 
-        <div  class="col-lg-4" >
-            <img class="img-thumbnail" id="map" src="static/images/Fond_carte.jpg" alt="image_carte">
-        </div>
-      </div>
-
-
-
-      <footer class="row">
-          <div class="col-lg-12">
             <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="jumbotron">Bonjour, je suis papy robot, pose moi ta demande d'adresse sous la forme :</br> Salut GrandPy ! Est-ce que tu connais l'adresse de ... '</p>
+                        </div>
+                        <div class="col-lg-12">
+                             <div class="form_group">
+                                <label class="col-lg-12" for="champ"><strong>Pose ta question à GandPy Bot:</strong></label>
+                                <textarea class="col-lg-12" id="champ"  ></textarea>
+                                <div  class="col-lg-offset-7 col-lg-4">
+                                    <button class="btn btn-primary btn-block" type="button" id="question" ><span class="glyphicon glyphicon-ok-sign"></span>Envoyer question</button>
+                                    <button class= "btn btn-primary" id="question_chargement" type= "button" disabled >
+                                    <span class= "spinner-border spinner-border-sm" role= "status" aria-hidden= "true" ></span>
+                                    <span class= "sr-only" > Loading... </span> </button>
+                                    <button class= "btn btn-primary" id="question_chargement" type= "button" disabled >  chargement... </button>
 
-              <div class="col-lg-2 "><p>HOUCHE SERGE</p></div>
-              <div  class="col-lg-offset-2 col-lg-3"><a  href="https://github.com/Zebra385/P07_GrandPyBot.git">Lien-Github</a></div>
-              <div  class="col-lg-offset-2 col-lg-3"> <a  href="https://www.linkedin.com/in/sergehouche">LINKEDIN</a></div>
-            </div>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+                </div>
 
-            </div>
-      </footer>
+                <div  class="col-lg-4" >
+                    <img class="img-thumbnail" id="map" src="static/images/Fond_carte.jpg" alt="image_carte">
+                </div>
+              </div>
+
+
+
+        <footer class="row">
+              <div class="col-lg-12">
+                    <div class="row">
+                      <div class="col-lg-4 "><p>HOUCHE SERGE</p></div>
+                        <div  class="col-lg-4"><a  href="https://github.com/Zebra385/P07_GrandPyBot.git"><strong>Github</strong></a></div>
+                      <div  class=" col-lg-4"> <a  href="https://www.linkedin.com/in/sergehouche"><strong>LINKEDIN</strong></a></div>
+                    </div>
+              </div>
+        </footer>
     </div>
-    <!-- sript css-->
-    <!--script  href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet" type="text/css"/-->
-    <!--script  href="{{ url_for('static', filename='tuto.css') }}" rel="stylesheet" type="text/css"/-->
+
     <!-- Plugin JavaScript -->
     <!--script src="{{ url_for('static', filename='js/jquery.js') }}"></script-->
-    <!-- Bootstrap Core JavaScript -->
-     <script src="static/js/jquery.js"></script>
+    <script src="static/js/jquery.js"></script>
 
     <script type="text/javascript" src="static/js/affichage.js"></script>
+    <!-- Bootstrap Core JavaScript -->
     <script src="static/js/bootstrap.js"></script>
-    <!-- sript clé d'utilisation de l' API Place de googlemaps-->
-    <!--script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo&callback=initMap"-->
-    <!--type="text/javascript"></script-->
+
 
 </body>
 </html>

@@ -14,20 +14,15 @@ class Article_Wiki():
     def get_site(self):
         """We def this function to return the site deducted from adresse"""
         adresse1 = self.adresse.split(',')
-
         adresse2 = adresse1[0].split(" ")
-
-
         count = 0
-        site_trouver = ""
+        find_site = ""
         for mot in adresse2:
             if count == 0:
                 pass
             else:
-                site_trouver = site_trouver + str(mot) + " "
+                site_trouver = find_site + str(mot) + " "
             count = +1
-        print('site trouver')
-        print(site_trouver)
         return site_trouver
 
     def get_pageid(self):
@@ -43,12 +38,10 @@ class Article_Wiki():
         R = requests.post(url=URL, params=PARAMS)
         DATA = R.json()
         if DATA['query']['search'][0]['title'] == self.site:
-
-            self.pageid = DATA['query']['search'][0]['pageid']
-
+           self.pageid = DATA['query']['search'][0]['pageid']
         return DATA['query']['search'][0]['pageid']
 
-            # maintenant que j'ai récuperer l'id de la page je fait une requette avec paramettre extract
+
 
     def get_article(self):
         """we def this function to find the article detected from pageid"""
