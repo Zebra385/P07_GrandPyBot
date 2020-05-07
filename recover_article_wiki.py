@@ -21,9 +21,9 @@ class Article_Wiki():
             if count == 0:
                 pass
             else:
-                site_trouver = find_site + str(mot) + " "
+                find_site = find_site + str(mot) + " "
             count = +1
-        return site_trouver
+        return find_site
 
     def get_pageid(self):
         """we def this function to find the page id of site wiki to the find adresse"""

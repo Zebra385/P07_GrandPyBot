@@ -30,7 +30,7 @@ $(function() {
                     // we name the site
                     var site_question = data.candidates[0].name;
                     var adresse = data.candidates[0].formatted_address;
-                    var site_json =
+                    var site_json ={'site':adresse,}
                     //we write the answer in windows
                     $r.append('Bien sûr mon poussin ! La voici l\' adresse de '+ site_question + ': ' + adresse);
                     $r.append('\r\n');
