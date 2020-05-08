@@ -1,32 +1,38 @@
-body { background-image : url("static/images/neige.jpg");
-	background-attachment :  fixed;
-	background-repeat : no-repeat;
-	background-size : cover ;
-	}
 
-
+body { background-image : url("../images/neige.jpg");
+    background-attachment :  fixed;
+    background-repeat : no-repeat;
+    background-size : cover ; }
+.container{
+background-color: rgba(0, 0, 0, 0.1)
+}
 .form-result{ width: 100%;  padding-right: 15px;  padding-left: 15px; height : 250px;}
-img, #map { max-width: 100%;height: auto;max-height : 100%;}
+img, #map { max-width: 100%;height: auto;max-height : 100%; }
+header
+{
+background: url('../images/separateur.png') repeat-x bottom;
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+}
+.jumbotron{
+font-size: 1.2em;
+}
+#question-reponse{
+background : white;
 
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-     ;
+box-shadow: 6px 6px 6px black inset;
 }
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
+
+#question{
+display: block;
 }
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
+#question_chargement,#question_chargement2{
+display: none;
 }
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
+#titre{
+text-shadow: 2px 2px 4px black;
 }
+a{
+color: blue;
+        }

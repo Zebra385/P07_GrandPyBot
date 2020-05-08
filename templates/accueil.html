@@ -1,54 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="fr" >
 <head>
 
     <!-- Required metadata tags -->
     <meta charset="utf-8">
-    <!-- site responsive whit desactivate zoom-->
+    <!-- site responsive with desactivate zoom-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Papy Bot.">
+
     <link href="static/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="static/css/tuto.css" rel="stylesheet"  type="text/css"/>
-
-     <style type="text/css">
-        body { background-image : url("static/images/neige.jpg");
-        background-attachment :  fixed;
-        background-repeat : no-repeat;
-        background-size : cover ; }
-        .container{
-        background-color: rgba(0, 0, 0, 0.1)
-        }
-        .form-result{ width: 100%;  padding-right: 15px;  padding-left: 15px; height : 250px;}
-        img, #map { max-width: 100%;height: auto;max-height : 100%; }
-        header
-        {
-        background: url('static/images/separateur.png') repeat-x bottom;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        }
-        .jumbotron{
-        font-size: 1.2em;
-        }
-        #question-reponse{
-        background_color: white;
-
-        box-shadow: 6px 6px 6px black inset;
-        }
-
-        #question{
-        display: block;
-        }
-        #question_chargement{
-        display: none;
-        }
-        #titre{
-        text-shadow: 2px 2px 4px black;
-        }
-        a{
-        color: blue;
-        }
-    </style>
+    <link href="../static/css/tuto.css" rel="stylesheet"  type="text/css"/>
 
     <title>Le site de GrandPyBot par Zebra385</title>
 </head>
@@ -57,8 +18,8 @@
         <header class="row">
             <div class="col-lg-12">
                 <div class="row">
-                    <img class="col-lg-2 "src="static/images/tete_robot_demi.jpg" alt="logo1">
-                    <div id="titre" class="col-lg-8"> <h1></br>GRAND PY BOT </br>répond à  ta recherche d'adresse</h1></div>
+                    <img class="col-lg-2" src="static/images/tete_robot_demi.jpg" alt="logo1">
+                    <div id="titre" class="col-lg-8"> <h1><br>GRAND PY BOT <br>répond à  ta recherche d'adresse</h1></div>
                     <img class="col-lg-2" src="static/images/tete_papy_demi.jpg" alt="logo2">
                 </div>
 
@@ -67,8 +28,10 @@
         <div class="row">
             <span class="border border-primary"></span>
             <div class="col-lg-12">
-                <section id="question-reponse" >
+                <section id="question-reponse">
+                    <h4>.
                     <textarea  id="champ_question_reponse" class="form-result" ></textarea>
+                    </h4>
                 </section>
             </div>
         </div>
@@ -77,18 +40,20 @@
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="col-lg-12">
-                            <p class="jumbotron">Bonjour, je suis papy robot, pose moi ta demande d'adresse sous la forme :</br> Salut GrandPy ! Est-ce que tu connais l'adresse de ... '</p>
+                            <p class="jumbotron">Bonjour, je suis papy robot, pose moi ta demande d'adresse sous la forme :<br> Salut GrandPy ! Est-ce que tu connais l'adresse de ... '</p>
                         </div>
                         <div class="col-lg-12">
                              <div class="form_group">
                                 <label class="col-lg-12" for="champ"><strong>Pose ta question à GandPy Bot:</strong></label>
-                                <textarea class="col-lg-12" id="champ"  ></textarea>
-                                <div  class="col-lg-offset-7 col-lg-4">
+                                <textarea class="col-lg-12" id="champ"  >Salut GrandPy ! Est-ce que tu connais l'adresse de</textarea>
+                                <div  class="col-lg-4">
                                     <button class="btn btn-primary btn-block" type="button" id="question" ><span class="glyphicon glyphicon-ok-sign"></span>Envoyer question</button>
+                                </div>
+                                 <div  class="col-lg-4">
                                     <button class= "btn btn-primary" id="question_chargement" type= "button" disabled >
                                     <span class= "spinner-border spinner-border-sm" role= "status" aria-hidden= "true" ></span>
                                     <span class= "sr-only" > Loading... </span> </button>
-                                    <button class= "btn btn-primary" id="question_chargement" type= "button" disabled >  chargement... </button>
+                                    <button class= "btn btn-primary btn-block " id="question_chargement2" type= "button" disabled >  <span class="glyphicon glyphicon-ok-sign"></span>Chargement... </button>
 
                                 </div>
                              </div>
@@ -106,9 +71,16 @@
         <footer class="row">
               <div class="col-lg-12">
                     <div class="row">
-                      <div class="col-lg-4 "><p>HOUCHE SERGE</p></div>
-                        <div  class="col-lg-4"><a  href="https://github.com/Zebra385/P07_GrandPyBot.git"><strong>Github</strong></a></div>
-                      <div  class=" col-lg-4"> <a  href="https://www.linkedin.com/in/sergehouche"><strong>LINKEDIN</strong></a></div>
+                      <div class="col-lg-3 "><p>HOUCHE SERGE</p></div>
+                        <div  class="col-lg-3"><a  href="https://github.com/Zebra385/P07_GrandPyBot.git"><strong>Github</strong></a></div>
+                      <div  class=" col-lg-3"> <a  href="https://www.linkedin.com/in/sergehouche"><strong>LINKEDIN</strong></a></div>
+                    <div  class=" col-lg-3">
+                        <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                        <img style="border:0;width:88px;height:31px"
+                        src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                        alt="CSS Valide !" />
+                        </a>
+                    </div>
                     </div>
               </div>
         </footer>
@@ -118,7 +90,7 @@
     <!--script src="{{ url_for('static', filename='js/jquery.js') }}"></script-->
     <script src="static/js/jquery.js"></script>
 
-    <script type="text/javascript" src="static/js/affichage.js"></script>
+    <script  src="static/js/affichage.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="static/js/bootstrap.js"></script>
 

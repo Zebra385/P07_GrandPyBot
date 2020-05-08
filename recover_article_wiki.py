@@ -4,12 +4,13 @@ import requests
 
 
 class Article_Wiki():
-    """We def a class to return the article that the robot Papy Bot must be say"""
+    """We def a class to return the article
+     that the robot Papy Bot must be say
+     """
     def __init__(self, adresse):
         self.adresse = adresse
         self.pageid = self.get_site()
         self.article = self.get_article()
-
 
     def get_site(self):
         """We def this function to return the site deducted from adresse"""
@@ -26,9 +27,10 @@ class Article_Wiki():
         return find_site
 
     def get_pageid(self):
-        """we def this function to find the page id of site wiki to the find adresse"""
+        """we def this function to find the page id of site wiki
+        to the find adresse"""
         URL = "https://fr.wikipedia.org/w/api.php"
-        self.site =self.get_site()
+        self.site = self.get_site()
         PARAMS = {
             "action": "query",
             "format": "json",
@@ -38,14 +40,12 @@ class Article_Wiki():
         R = requests.post(url=URL, params=PARAMS)
         DATA = R.json()
         if DATA['query']['search'][0]['title'] == self.site:
-           self.pageid = DATA['query']['search'][0]['pageid']
+            self.pageid = DATA['query']['search'][0]['pageid']
         return DATA['query']['search'][0]['pageid']
-
-
 
     def get_article(self):
         """we def this function to find the article detected from pageid"""
-        self.pageid=self.get_pageid()
+        self.pageid = self.get_pageid()
         URL = "https://fr.wikipedia.org/w/api.php"
         PARAMS2 = {
             "action": "query",
@@ -53,8 +53,8 @@ class Article_Wiki():
             "prop": "extracts",
             "pageids": self.pageid,
             "exsentences": 3,
-            "exintro":1,
-            "explaintext":1
+            "exintro": 1,
+            "explaintext": 1
         }
 
         R2 = requests.get(url=URL, params=PARAMS2)
@@ -62,4 +62,3 @@ class Article_Wiki():
         extract = DATA2['query']['pages'][str(self.pageid)]['extract']
 
         return extract
-

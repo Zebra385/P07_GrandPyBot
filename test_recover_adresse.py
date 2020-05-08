@@ -17,7 +17,7 @@ class TestRecoverAdresse:
         self.send= 'Rue de Rivoli, 75001 Paris, France'
         assert  self.send == 'Rue de Rivoli, 75001 Paris, France'
 
-    def test_http_return(self, monkeypatch):
+    def test_http_return( monkeypatch):
 
 
         results = [{
