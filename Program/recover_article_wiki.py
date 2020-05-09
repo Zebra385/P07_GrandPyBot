@@ -60,5 +60,4 @@ class Article_Wiki():
         R2 = requests.get(url=URL, params=PARAMS2)
         DATA2 = R2.json()
         extract = DATA2['query']['pages'][str(self.pageid)]['extract']
-
         return extract

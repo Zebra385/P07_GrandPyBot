@@ -1,8 +1,7 @@
-import recover_adresse as script
+from Program import recover_adresse as script
 import requests
 
-from io import BytesIO
-import json
+
 
 class TestRecoverAdresse:
     question = script.Question_Place('Salut GrandPy ! Est-ce que tu connais l\'adresse de le louvre')
@@ -13,26 +12,29 @@ class TestRecoverAdresse:
         assert self.recover_site == 'le louvre'
 
 
-    def test_send(self):
-        self.send= 'Rue de Rivoli, 75001 Paris, France'
-        assert  self.send == 'Rue de Rivoli, 75001 Paris, France'
 
-    def test_http_return( monkeypatch):
+# custom class to be the mock return value
+# will override the requests.Response returned from requests.get
+class MockResponse :
 
+    # mock json() method always returns a specific testing dictionary
+    @staticmethod
+    def json():
+        return {"formatted_address": 'Rue de Rivoli, 75001 Paris, France'}
 
-        results = [{
-            "candidates": [
-                {
-                    "formatted_address": "7 Cité Paradis, 75010 Paris, France",
-                    "name": "OpenClassrooms",
+def test_find( monkeypatch ):
+    question = script.Question_Place(
+        'Salut GrandPy ! Est-ce que tu connais l\'adresse de le louvre')
 
-                }
-            ]
-        }
-        ]
+    # Any arguments may be passed and mock_post() will always return our
+    # mocked object, which only has the .json() method.
+    def mock_post(* args, ** kwargs ):
+        return MockResponse ()
 
-        def mockreturn(requests):
-            return
+    # apply the monkeypatch for requests.get to mock_get
+    monkeypatch.setattr(requests, "post", mock_post)
 
-        monkeypatch.setattr(requests, "post", mockreturn)
-        assert self.send == results
+    # app.get_json, which contains requests.get, uses the monkeypatch
+    result = question.send()
+    assert result["formatted_address"] == "Rue de Rivoli, 75001 Paris, France"
+

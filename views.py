@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
-from recover_adresse import Question_Place
-from recover_article_wiki import Article_Wiki
+from Program.recover_adresse import Question_Place
+from Program.recover_article_wiki import Article_Wiki
 
 
 app = Flask(__name__)
