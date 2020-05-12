@@ -16,11 +16,9 @@ class Question_Place():
         lengh_array_question = len(array_question)
         i = 9
         site = ""
-
         while i < lengh_array_question:
             site = site + str(array_question[i]) + " "
             i = i+1
-
         return site
 
     def send(self):
@@ -28,7 +26,6 @@ class Question_Place():
         """we def this function to find adresse with the API Place of google"""
         URL = "https://maps.googleapis.com/maps/api/" \
               "place/findplacefromtext/json"
-
         PARAMS = {
             "input": self.site,
             "inputtype": "textquery",

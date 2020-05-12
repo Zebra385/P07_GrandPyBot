@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-@app.route('/P07_GrandPyBot')
+@app.route('/GrandPyBot')
 def accueil():
     return render_template('accueil.html')
 
