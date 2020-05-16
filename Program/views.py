@@ -1,7 +1,7 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, send_from_directory
 from Program.recover_adresse import Question_Place
 from Program.recover_article_wiki import Article_Wiki
-
+import os
 
 app = Flask(__name__)
 
