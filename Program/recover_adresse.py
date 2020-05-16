@@ -1,9 +1,8 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 import requests, os
-from boto.s3.connection import S3Connection
 
-API_KEY = S3Connection(os.environ['API_KEY'])
+API_KEY = os.environ['API_KEY']
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
