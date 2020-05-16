@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" >
 <head>
+    <!--Evite les failles XSS-->
     <?php echo htmlspecialchars($_POST['nom']); // echo affiche les données sur un page, du coup on protège l'affichage avec la fonction htmlspecialchars?>
     <!-- Required metadata tags -->
     <meta charset="utf-8">

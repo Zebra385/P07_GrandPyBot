@@ -49,10 +49,10 @@ $(function() {
                     //we write the answer in windows
                     $r.append('Bien sûr mon poussin ! La voici l\' adresse de '+ site_question + ': ' + adresse);
                     $r.append('\r\n');
-                    $r.append(question_papy);
+                    $r.append(' Et je suis si gentils que je  l\' indique sur la carte ci dessous : ');
                     $r.append('\r\n');
                     //we write a sentence to describe the history of this site
-                    $r.append('Mais t ai-je déjà raconté l\' histoire de ce quartier qui m\' a vu en culottes courtes ?');
+                    $r.append(question_papy);
                     $r.append('\r\n');
                     // We find a mp of this adresse
                     var center = 'center='+adresse;
