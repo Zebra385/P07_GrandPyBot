@@ -1,6 +1,6 @@
 
 $(function() {
-    var API_KEY = AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo
+    var API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
     var $f = $('#question');
 
 
