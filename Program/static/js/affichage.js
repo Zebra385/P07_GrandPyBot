@@ -1,7 +1,17 @@
 
 $(function() {
     var API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
-    var $f = $('#question');
+    var $f =  htmlspecialchars($('#question')); // protection faille XSS
+    var function_rundom(){
+            var min=1;
+            var max=4;
+            var random = Math.floor(Math.random() * (max - min)) + min;
+            var arr = ['Mais t ai-je déjà raconté l\' histoire de ce quartier qui m\' a vu en culottes courtes ?',
+                        'Je suis un brin admiratif pour t\'ajouter cet article sur ce quartier',
+                        'Ne t\'en vas pas dèjà car je te rajoute un peu d\'histoire: ',
+                        'Attends un peu je n\'ai pas fini, voici l\'histoire de ce quartier'];
+                         };
+            return arr[random]
 
 
     $f.on('click', function(e){
@@ -35,10 +45,11 @@ $(function() {
                     var site_question = data.candidates[0].name;
                     var adresse = data.candidates[0].formatted_address;
                     var site_json ={'site':adresse,}
+                    var question_papy = function_rundom()
                     //we write the answer in windows
                     $r.append('Bien sûr mon poussin ! La voici l\' adresse de '+ site_question + ': ' + adresse);
                     $r.append('\r\n');
-                    $r.append(' Et je suis si gentils que je  l\' indique sur la carte ci dessous : ');
+                    $r.append(question_papy);
                     $r.append('\r\n');
                     //we write a sentence to describe the history of this site
                     $r.append('Mais t ai-je déjà raconté l\' histoire de ce quartier qui m\' a vu en culottes courtes ?');
