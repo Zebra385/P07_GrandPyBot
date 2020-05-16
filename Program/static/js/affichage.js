@@ -1,7 +1,7 @@
 
 $(function() {
     var API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
-    var $f =  htmlspecialchars($('#question')); // protection faille XSS
+    var $f =  ($('#question')); // protection faille XSS
     function search_question(){
             var min=1;
             var max=4;
