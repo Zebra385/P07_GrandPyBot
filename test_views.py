@@ -29,6 +29,8 @@ class TestViews(TestCase):
         assert response.status_code == 200
         self.assert_template_used('accueil.html')
 
-    def test_Find_article(self):
+    def test_Find_site(self):
         response = self.client.get("/ajax/")
-        self.assertEquals(response.json, dict(success=True))
+        assert response.status_code == 200
+
+

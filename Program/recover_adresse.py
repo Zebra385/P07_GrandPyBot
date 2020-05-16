@@ -30,7 +30,7 @@ class Question_Place():
             "input": self.site,
             "inputtype": "textquery",
             "fields": "formatted_address,name,geometry",
-            "key": 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
+            "key": API_Key
         }
         r = requests.post(url=URL, params=PARAMS)
         return r.json()
