@@ -1,7 +1,9 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
-import requests
+import requests, os
+from boto.s3.connection import S3Connection
 
+API_KEY = S3Connection(os.environ['API_KEY'])
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
@@ -30,7 +32,7 @@ class Question_Place():
             "input": self.site,
             "inputtype": "textquery",
             "fields": "formatted_address,name,geometry",
-            "key": API_Key
+            "key": API_KEY
         }
         r = requests.post(url=URL, params=PARAMS)
         return r.json()
