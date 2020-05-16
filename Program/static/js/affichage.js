@@ -2,7 +2,7 @@
 $(function() {
     var API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
     var $f =  htmlspecialchars($('#question')); // protection faille XSS
-    var function_rundom(){
+    var function_rundom({
             var min=1;
             var max=4;
             var random = Math.floor(Math.random() * (max - min)) + min;
@@ -10,9 +10,9 @@ $(function() {
                         'Je suis un brin admiratif pour t\'ajouter cet article sur ce quartier',
                         'Ne t\'en vas pas dèjà car je te rajoute un peu d\'histoire: ',
                         'Attends un peu je n\'ai pas fini, voici l\'histoire de ce quartier'];
-                         };
-            return arr[random]
 
+            return arr[random]
+            });
 
     $f.on('click', function(e){
         e.preventDefault();
