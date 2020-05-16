@@ -77,7 +77,6 @@ $(function() {
                                 }
                     },
             error: function(){
-            alert('pas recup article');
                    $r.append('Désolé je n\'ai pas trouvé ton adresse!');
                    $r.append('\r\n');
                    $r.append('Essaye en une autre');
