@@ -2,7 +2,7 @@
 $(function() {
     var API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
     var $f =  htmlspecialchars($('#question')); // protection faille XSS
-    var function_rundom({
+    function search_question(){
             var min=1;
             var max=4;
             var random = Math.floor(Math.random() * (max - min)) + min;
@@ -12,7 +12,7 @@ $(function() {
                         'Attends un peu je n\'ai pas fini, voici l\'histoire de ce quartier'];
 
             return arr[random]
-            });
+            };
 
     $f.on('click', function(e){
         e.preventDefault();
@@ -45,7 +45,7 @@ $(function() {
                     var site_question = data.candidates[0].name;
                     var adresse = data.candidates[0].formatted_address;
                     var site_json ={'site':adresse,}
-                    var question_papy = function_rundom()
+                    var question_papy = search_question()
                     //we write the answer in windows
                     $r.append('Bien sûr mon poussin ! La voici l\' adresse de '+ site_question + ': ' + adresse);
                     $r.append('\r\n');
