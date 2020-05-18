@@ -4,7 +4,7 @@ from Program.recover_article_wiki import Article_Wiki
 import os
 
 app = Flask(__name__)
-
+API_KEY = os.environ['API_KEY']
 
 @app.route('/')
 @app.route('/GrandPyBot')
@@ -13,7 +13,7 @@ def accueil():
 
 
 @app.route('/find-site', methods=['POST'])
-def find_site():
+def find_site(API_KEY):
     data = request.get_json()
     text_input = data['text']
     question = Question_Place(text_input)
