@@ -1,6 +1,6 @@
 
 $(function() {
-    var API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
+    var API_KEY = os.environ['API_KEY']
     var $f =  ($('#question')); // protection faille XSS
     function search_question(){
             var min=1;
@@ -11,7 +11,7 @@ $(function() {
                         'Ne t\'en vas pas dèjà car je te rajoute un peu d\'histoire: ',
                         'Attends un peu je n\'ai pas fini, voici l\'histoire de ce quartier'];
 
-            return arr[random]
+            return arr[random] // Return one of the four sentences
             };
 
     $f.on('click', function(e){
@@ -79,8 +79,7 @@ $(function() {
                                         $r.append(article);
                                                         },
                                 error: function(){
-                                    alert('pas recup adresse');
-                                    $r.append('Désolé je n\'ai pas trouvé l\'adresse de se site!');
+                                    $r.append('Désolé je n\'ai pas trouvé d\'article sur ce  site!');
                                     $r.append('\r\n');
                                     $r.append('Fait un essai pour un autre site');
                                                 }

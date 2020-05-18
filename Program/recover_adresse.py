@@ -1,8 +1,22 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 import requests, os
+import json
+
+
+def read_values_from_json(file):
+    """    We fill a array like a dictionnary with a json file     """
+    values = []#create a list
+    with open(file) as f:# open a json file with my objects
+        data = json.load(f) # load all the data contained in this file f
+        for entry in data:# Create a new empty list
+            values.append(entry)# add each item in my list
+    return values # return my completed list
+
+dictionnaire_words=read_values_from_json('words.json')
 
 API_KEY = os.environ['API_KEY']
+
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
@@ -13,13 +27,39 @@ class Question_Place():
     def recover_site(self):
         """we def this function to find site in the question"""
         # we split the question
-        array_question = self.question.split()
-        lengh_array_question = len(array_question)
-        i = 9
+        self.tableau_question = self.question.split()
+        self.tableau_question_racourcie = self.tableau_question
         site = ""
-        while i < lengh_array_question:
-            site = site + str(array_question[i]) + " "
-            i = i+1
+        print('le tableau question est')
+        print(self.tableau_question)
+        # We looking for the length the array
+        # If the word is in the dictionnary we remove this word in the dictionnary
+        length_tableau = len(self.tableau_question)
+        if length_tableau == 1:
+
+            site = str(self.tableau_question[0])
+
+        else:
+            for word in dictionnaire_words:
+
+                for word_question in self.tableau_question:
+
+                    print('word_question est :')
+                    print(word_question)
+                    if word_question == word:
+                        print('word du dico est ')
+                        print(word)
+
+                        self.tableau_question_racourcie.remove(word_question)
+
+            i = 0
+
+            while i < len(self.tableau_question_racourcie):
+                site = site + str(self.tableau_question_racourcie[i]) + " "
+                i = i + 1
+
+        print('tu recherche l adresse du site: ' + site)
+
         return site
 
     def send(self):
