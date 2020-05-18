@@ -43,37 +43,32 @@ class Question_Place():
         self.tableau_question_racourcie=self.cut_question(self)
         self.tableau_site = self.tableau_question_racourcie
         site = ""
-        print('le tableau question est')
-        print(self.tableau_question_racourcie)
         # We looking for the length the array
         # If the word is in the dictionnary we remove this word in the dictionnary
         length_tableau = len(self.tableau_question_racourcie)
         if length_tableau == 1:
 
-            site = str(self.tableau_question_racourcie[0])
+            self.site = str(self.tableau_question_racourcie[0])
 
         else:
             for word in dictionnaire_words:
 
                 for word_question in self.tableau_question_racourcie:
 
-                    print('word_question est :')
-                    print(word_question)
+
                     if word_question == word:
-                        print('word du dico est ')
-                        print(word)
 
                         self.tableau_site.remove(word_question)
 
             i = 0
 
             while i < len(self.tableau_question_racourcie):
-                site = site + str(self.tableau_question_racourcie[i]) + " "
+                self.site = self.site + str(self.tableau_site[i]) + " "
                 i = i + 1
 
-        print('tu recherche l adresse du site: ' + site)
 
-        return site
+
+        return self.site
 
     def send(self):
         self.site = self.recover_site()
