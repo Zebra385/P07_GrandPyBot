@@ -1,6 +1,6 @@
 
 $(function() {
-    //var API_KEY = os.environ['API_KEY']
+    var API_KEY ="{{ os.environ['API_KEY']}}"
     var $f =  ($('#question')); // protection faille XSS
     function search_question(){
             var min=1;
