@@ -40,7 +40,9 @@ class Question_Place():
 
     def recover_site(self):
         """we def this function to find site in the question"""
-        self.tableau_question_racourcie=self.cut_question(self)
+        self.tableau_question_racourcie=self.cut_question()
+        print('la question netoyé est')
+        print(self.tableau_question_racourcie)
         self.tableau_site = self.tableau_question_racourcie
         site = ""
         # We looking for the length the array
@@ -48,7 +50,7 @@ class Question_Place():
         length_tableau = len(self.tableau_question_racourcie)
         if length_tableau == 1:
 
-            self.site = str(self.tableau_question_racourcie[0])
+            site = str(self.tableau_question_racourcie[0])
 
         else:
             for word in dictionnaire_words:
@@ -63,12 +65,13 @@ class Question_Place():
             i = 0
 
             while i < len(self.tableau_question_racourcie):
-                self.site = self.site + str(self.tableau_site[i]) + " "
+                site = site + str(self.tableau_site[i]) + " "
                 i = i + 1
 
 
-
-        return self.site
+        print(' le site est')
+        print(site)
+        return site
 
     def send(self):
         self.site = self.recover_site()
