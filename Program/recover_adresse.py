@@ -24,25 +24,38 @@ class Question_Place():
         self.question = question
         self.site = self.recover_site()
 
+
+
+    def cut_question(self):
+        # we split the question
+        self.question = self.question.lower()  # on met tout en minuscule
+        # on enleve tous les caractere autre que des noms
+        b = "!@#$?,123456789'"
+        for char in b:
+            self.question = self.question.replace(char, " ")
+            # on decoupe en mot notre question
+        return self.question.split()
+
+
+
     def recover_site(self):
         """we def this function to find site in the question"""
-        # we split the question
-        self.tableau_question = self.question.split()
-        self.tableau_question_racourcie = self.tableau_question
+        self.tableau_question_racourcie=self.cut_question(self)
+        self.tableau_site = self.tableau_question_racourcie
         site = ""
         print('le tableau question est')
-        print(self.tableau_question)
+        print(self.tableau_question_racourcie)
         # We looking for the length the array
         # If the word is in the dictionnary we remove this word in the dictionnary
-        length_tableau = len(self.tableau_question)
+        length_tableau = len(self.tableau_question_racourcie)
         if length_tableau == 1:
 
-            site = str(self.tableau_question[0])
+            site = str(self.tableau_question_racourcie[0])
 
         else:
             for word in dictionnaire_words:
 
-                for word_question in self.tableau_question:
+                for word_question in self.tableau_question_racourcie:
 
                     print('word_question est :')
                     print(word_question)
@@ -50,7 +63,7 @@ class Question_Place():
                         print('word du dico est ')
                         print(word)
 
-                        self.tableau_question_racourcie.remove(word_question)
+                        self.tableau_site.remove(word_question)
 
             i = 0
 
