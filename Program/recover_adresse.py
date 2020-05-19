@@ -3,7 +3,7 @@
 import requests, os
 import json
 
-# from Program import app
+
 def read_values_from_json(file):
     """    We fill a array like a dictionnary with a json file     """
     values = []#create a list
@@ -14,11 +14,10 @@ def read_values_from_json(file):
     return values # return my completed list
 
 dictionnaire_words=read_values_from_json('words.json')
-# Config options - Make sure you created a 'config.py' file.
-#app.config.from_object('config')
-# To get one variable, tape app.config['MY_VARIABLE']
+
+""" Secret Key import to variable in environement"""
 API_KEY = os.environ['API_KEY']
-#API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
+
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
@@ -31,11 +30,11 @@ class Question_Place():
     def cut_question(self):
         # we split the question
         self.question = self.question.lower()  # on met tout en minuscule
-        # on enleve tous les caractere autre que des noms
+        # We take  off all characters no words
         b = "!@#$?,123456789'"
         for char in b:
             self.question = self.question.replace(char, " ")
-            # on decoupe en mot notre question
+            #We make a list of words  with our question
         return self.question.split()
 
 
@@ -69,10 +68,6 @@ class Question_Place():
             while i < len(self.tableau_question_racourcie):
                 site = site + str(self.tableau_site[i]) + " "
                 i = i + 1
-
-
-        print(' le site est')
-        print(site)
         return site
 
     def send(self):
@@ -90,22 +85,13 @@ class Question_Place():
         return r.json()
 
     def map(self):
+
+        """we def this function to find map with the API ...of google"""
         self.adresse = self.send()
         adresse=self.adresse['candidates'][0]['formatted_address']
-        # candidates[0].formatted_address()
-        print('le  adresse est:')
-        print(adresse)
-        marker = "size:mid%7Ccolor:red%7CSan"+ adresse
-        """we def this function to find map with the API ...of google"""
         URL = "https://maps.googleapis.com/maps/api/staticmap?"
         center = 'center=' + adresse;
-
         markers = '&markers=size:mid%7Ccolor:red%7CSan' + adresse;
-
         key = '&key=' +  API_KEY
-
         img_src =URL  + center + '&zoom=12&size=400x200&maptype=roadmap' + markers + key
-        print('scr e l image est=')
-        print(img_src)
-
         return img_src

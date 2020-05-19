@@ -1,6 +1,6 @@
 
 $(function() {
-    // var API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
+
     var $f =  ($('#question')); // protection faille XSS
     function search_question(){
             var min=1;
@@ -54,17 +54,8 @@ $(function() {
                     //we write a sentence to describe the history of this site
                     $r.append(question_papy);
                     $r.append('\r\n');
-                    // We find a mp of this adresse
-                    //var center = 'center='+adresse;
-                    //var markers ='&markers=size:mid%7Ccolor:red%7CSan'+adresse;
-                    //var key='&key='+  '{{ config['API_KEY'] }}'
-                    //var img_src = 'https://maps.googleapis.com/maps/api/staticmap?'+ center + '&zoom=12&size=400x200&maptype=roadmap' + markers + key;
-                    //// we show the map
-                    //$i.attr('src',img_src);
-                    //$i.replaceWith(img);
-
                     if (adresse != "")
-                                // we call the route find_article to find a article on this site
+
                                 {
                                 // we look for a map with adresse
                                 $.ajax({
@@ -78,14 +69,13 @@ $(function() {
                                 success: async function recover_map(data){
                                         var img_src =data
                                         // we show the map
-                                        alert('data est');
-                                        alert(data);
                                         $i.attr('src',img_src);
                                         },
                                 error: function(){
-                                        alert('erreur carte')
+                                        $i.attr('src',"static/images/Fond_carte_non.jpg");
                                         }
                                         });
+                                // we call the route find_article to find a article on this site
                                 $.ajax({
                                 url: '/find-article',
                                 method: 'POST',
