@@ -1,6 +1,6 @@
 
 $(function() {
-    var API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
+    // var API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
     var $f =  ($('#question')); // protection faille XSS
     function search_question(){
             var min=1;
@@ -57,7 +57,7 @@ $(function() {
                     // We find a mp of this adresse
                     var center = 'center='+adresse;
                     var markers ='&markers=size:mid%7Ccolor:red%7CSan'+adresse;
-                    var key='&key='+ API_KEY
+                    var key='&key='+  '{{ config['API_KEY'] }}'
                     var img_src = 'https://maps.googleapis.com/maps/api/staticmap?'+ center + '&zoom=12&size=400x200&maptype=roadmap' + markers + key;
                     // we show the map
                     $i.attr('src',img_src);

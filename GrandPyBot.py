@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
-
-from Program.views import app
+import Program
+from Program import app
 
 
 if __name__ == '__main__':

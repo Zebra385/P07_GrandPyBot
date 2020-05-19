@@ -3,7 +3,7 @@
 import requests, os
 import json
 
-
+# from Program import app
 def read_values_from_json(file):
     """    We fill a array like a dictionnary with a json file     """
     values = []#create a list
@@ -14,8 +14,10 @@ def read_values_from_json(file):
     return values # return my completed list
 
 dictionnaire_words=read_values_from_json('words.json')
-
-API_KEY = os.environ['API_KEY']
+# Config options - Make sure you created a 'config.py' file.
+#app.config.from_object('config')
+# To get one variable, tape app.config['MY_VARIABLE']
+ API_KEY = os.environ['API_KEY']
 # API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
 
 class Question_Place():
