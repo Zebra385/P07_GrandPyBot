@@ -11,8 +11,8 @@
  py -m pip install -r requirements.txt
 ### On utilisera la version python 3.7.5 en 32 bits
 ## 3.Comment exécuter le programme?
-### Lorsque le site sera hebergé sous HEROKU il suffira de connaitre l'url 
-### du site
+### Le site est hebergé sous HEROKU son url est :
+### https://grandpybotzebra385.herokuapp.com/
 ### Pour le développeur l'éxécution se fera sur la console via le fichier 
 ### GrandPyBot.py 
 ### Puis on ouvre son navigateur et on va sur l'adresse indiquée :
