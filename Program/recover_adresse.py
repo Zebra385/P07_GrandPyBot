@@ -17,8 +17,8 @@ dictionnaire_words=read_values_from_json('words.json')
 # Config options - Make sure you created a 'config.py' file.
 #app.config.from_object('config')
 # To get one variable, tape app.config['MY_VARIABLE']
-API_KEY = os.environ['API_KEY']
-# API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
+#API_KEY = os.environ['API_KEY']
+API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
@@ -88,3 +88,24 @@ class Question_Place():
         }
         r = requests.post(url=URL, params=PARAMS)
         return r.json()
+
+    def map(self):
+        self.adresse = self.send()
+        adresse=self.adresse['candidates'][0]['formatted_address']
+        # candidates[0].formatted_address()
+        print('le  adresse est:')
+        print(adresse)
+        marker = "size:mid%7Ccolor:red%7CSan"+ adresse
+        """we def this function to find map with the API ...of google"""
+        URL = "https://maps.googleapis.com/maps/api/staticmap?"
+        center = 'center=' + adresse;
+
+        markers = '&markers=size:mid%7Ccolor:red%7CSan' + adresse;
+
+        key = '&key=' +  API_KEY
+
+        img_src =URL  + center + '&zoom=12&size=400x200&maptype=roadmap' + markers + key
+        print('scr e l image est=')
+        print(img_src)
+
+        return img_src

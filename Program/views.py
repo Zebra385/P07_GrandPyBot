@@ -23,6 +23,18 @@ def find_site():
     response = question.send()
     return jsonify(response)
 
+@app.route('/map', methods=['POST'])
+def map():
+    data = request.get_json()
+    print('dans route data est :')
+    print(data)
+    text_input = data['text']
+    question = Question_Place(text_input)
+    response = question.map()
+    print ('la reponse dans route map est ')
+    print(response)
+    return response
+
 
 @app.route('/find-article', methods=['POST'])
 def find_article():

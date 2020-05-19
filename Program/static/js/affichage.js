@@ -55,16 +55,37 @@ $(function() {
                     $r.append(question_papy);
                     $r.append('\r\n');
                     // We find a mp of this adresse
-                    var center = 'center='+adresse;
-                    var markers ='&markers=size:mid%7Ccolor:red%7CSan'+adresse;
-                    var key='&key='+  '{{ config['API_KEY'] }}'
-                    var img_src = 'https://maps.googleapis.com/maps/api/staticmap?'+ center + '&zoom=12&size=400x200&maptype=roadmap' + markers + key;
-                    // we show the map
-                    $i.attr('src',img_src);
+                    //var center = 'center='+adresse;
+                    //var markers ='&markers=size:mid%7Ccolor:red%7CSan'+adresse;
+                    //var key='&key='+  '{{ config['API_KEY'] }}'
+                    //var img_src = 'https://maps.googleapis.com/maps/api/staticmap?'+ center + '&zoom=12&size=400x200&maptype=roadmap' + markers + key;
+                    //// we show the map
+                    //$i.attr('src',img_src);
                     //$i.replaceWith(img);
+
                     if (adresse != "")
                                 // we call the route find_article to find a article on this site
                                 {
+                                // we look for a map with adresse
+                                $.ajax({
+                                url: '/map',
+                                method: 'POST',
+                                headers: {
+                                'Content-Type': 'application/json'
+                                },
+                                dataType: 'text',
+                                data: JSON.stringify(question_json),
+                                success: async function recover_map(data){
+                                        var img_src =data
+                                        // we show the map
+                                        alert('data est');
+                                        alert(data);
+                                        $i.attr('src',img_src);
+                                        },
+                                error: function(){
+                                        alert('erreur carte')
+                                        }
+                                        });
                                 $.ajax({
                                 url: '/find-article',
                                 method: 'POST',
