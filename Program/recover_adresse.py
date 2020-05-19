@@ -17,8 +17,8 @@ dictionnaire_words=read_values_from_json('words.json')
 # Config options - Make sure you created a 'config.py' file.
 #app.config.from_object('config')
 # To get one variable, tape app.config['MY_VARIABLE']
-#API_KEY = os.environ['API_KEY']
-API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
+API_KEY = os.environ['API_KEY']
+#API_KEY = 'AIzaSyAu-GCUJE1l_rVUxe0Tk0c5DXdNXnM94Oo'
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
