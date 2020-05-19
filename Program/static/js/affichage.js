@@ -1,6 +1,6 @@
 
 $(function() {
-
+    // No Key all is secret
     var $f =  ($('#question')); // protection faille XSS
     function search_question(){
             var min=1;
