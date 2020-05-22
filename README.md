@@ -4,11 +4,11 @@
 ### C'est une site internet sous l'égide du robot GrandPyBOT
 ###    Celui-ci permet de trouver  la réponse à une requette
 ### GrandPy Bot indique l'adresse du site demandé
-###Ensuite Il ajoute une carte ou il situe l'adresse
-###Et enfin il raconte une petite histoire ...
+### Ensuite Il ajoute une carte ou il situe l'adresse
+### Et enfin il raconte une petite histoire ...
 ## 2. Comment démarrer le programme?
 ###  Il faut installer les bibliothèques à  l'aide de la commande:
- py -m pip install -r requirements.txt
+### py -m pip install -r requirements.txt
 ### On utilisera la version python 3.7.5 en 32 bits
 ## 3.Comment exécuter le programme?
 ### Le site est hebergé sous HEROKU son url est :
