@@ -18,10 +18,10 @@ dictionnaire_words=read_values_from_json('words.json')
 
 """"Only in developpement you use the if condition"""
 # if 'API_KEY' is not None:
-    """ Secret Key import to variable file config.py in developpement"""
+""" Secret Key import to variable file config.py in developpement"""
 #    API_KEY= config.API_KEY
 #else:
-    """ Secret Key import to variable in environement in production """
+""" Secret Key import to variable in environement in production """
 API_KEY =os.environ['API_KEY']
 
 class Question_Place():
