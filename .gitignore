@@ -1,8 +1,7 @@
 venv/
 .idea/
 .pytest_cache
-test_views.py
-test_recover_adresse.py
-test_recover_article_wiki.py
+
 htmlcov
 .env
+testscd..

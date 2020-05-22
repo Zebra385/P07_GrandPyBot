@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 import requests, os
 import json
+import config
 
 
 def read_values_from_json(file):
@@ -15,9 +16,13 @@ def read_values_from_json(file):
 
 dictionnaire_words=read_values_from_json('words.json')
 
-""" Secret Key import to variable in environement"""
-API_KEY = os.environ['API_KEY']
 
+if 'API_KEY' is not None:
+    """ Secret Key import to variable file config.py in developpement"""
+    API_KEY= config.API_KEY
+else:
+    """ Secret Key import to variable in environement in production """
+    API_KEY =os.environ['API_KEY']
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
@@ -31,7 +36,7 @@ class Question_Place():
         # we split the question
         self.question = self.question.lower()  # on met tout en minuscule
         # We take  off all characters no words
-        b = "!@#$?,123456789'"
+        b = "!@#$?,123456789'<>"
         for char in b:
             self.question = self.question.replace(char, " ")
             #We make a list of words  with our question
@@ -42,8 +47,7 @@ class Question_Place():
     def recover_site(self):
         """we def this function to find site in the question"""
         self.tableau_question_racourcie=self.cut_question()
-        print('la question netoyé est')
-        print(self.tableau_question_racourcie)
+
         self.tableau_site = self.tableau_question_racourcie
         site = ""
         # We looking for the length the array
