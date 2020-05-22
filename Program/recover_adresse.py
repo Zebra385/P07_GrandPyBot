@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 import requests, os
 import json
-import config
+# import config only for developement
 
 
 def read_values_from_json(file):
