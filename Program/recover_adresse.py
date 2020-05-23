@@ -15,26 +15,16 @@ def read_values_from_json(file):
 
 
 dictionnaire_words = read_values_from_json('words.json')
-"""
-if 'API_KEY' is  None:
-     Secret Key import to variable in environnement in production 
-    import  config
-    API_KEY = config.API_KEY
 
-elif 'API_KEY' is not None:
-     Secret Key import to variable file config.py in développement
-    API_KEY = os.environ['API_KEY']
-"""
 
 for key in os.environ:
     if key == 'API_KEY':
-        print("Existing key")
+        """Secret Key import to variable in environnement in production """
         KEY_API = os.environ['API_KEY']
-
     else:
-        import config
-        KEY_API = config.API_KEY
-        print("Not existing")
+        """Secret Key import to variable file config.py in développement"""
+        KEY_API = "YOUR own key for API Google"
+
 
 
 

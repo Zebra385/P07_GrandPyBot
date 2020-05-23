@@ -13,7 +13,10 @@
 ## 3.Comment exécuter le programme?
 ### Le site est hebergé sous HEROKU son url est :
 ### https://grandpybotzebra385.herokuapp.com/
-### Pour le développeur l'éxécution se fera sur la console via le fichier 
-### GrandPyBot.py 
+### Pour le développeur 
+### Il faut s'enregistrer sur google pour recuperer une clé d'utilisation
+### Cette clé doit être à la ligne 24  et remplacer 
+### "YOUR own key for API Google" 
+### l'éxécution se fera sur la console via le fichier GrandPyBot.py 
 ### Puis on ouvre son navigateur et on va sur l'adresse indiquée :
 ###  Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
