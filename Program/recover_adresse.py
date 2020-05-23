@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
-import requests, os, json
-
+import json
+import os
+import requests
 
 
 def read_values_from_json(file):
@@ -16,25 +17,25 @@ def read_values_from_json(file):
 
 dictionnaire_words = read_values_from_json('words.json')
 
-
+count = 0
 for key in os.environ:
     if key == 'API_KEY':
         """Secret Key import to variable in environnement in production """
-        KEY_API = os.environ['API_KEY']
-    else:
-        """Secret Key import to variable file config.py in développement"""
-        KEY_API = "YOUR own key for API Google"
+        count = 1
 
-
+if count == 1:
+    KEY_API = os.environ['API_KEY']
+else:
+    """Secret Key for développement"""
+    KEY_API = "YOUR own key for API Google"
 
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
+
     def __init__(self, question):
         self.question = question
         self.site = self.recover_site()
-
-
 
     def cut_question(self):
         # we split the question
@@ -46,12 +47,9 @@ class Question_Place():
             #  We make a list of words  with our question
         return self.question.split()
 
-
-
     def recover_site(self):
         """we def this function to find site in the question"""
         self.tableau_question_racourcie = self.cut_question()
-
         self.tableau_site = self.tableau_question_racourcie
         site = ""
         #  We looking for the length the array
@@ -83,7 +81,7 @@ class Question_Place():
             "inputtype": "textquery",
             "fields": "formatted_address,name,geometry",
             "key": KEY_API
-            }
+        }
         r = requests.post(url=URL, params=PARAMS)
         return r.json()
 
@@ -91,11 +89,11 @@ class Question_Place():
 
         """we def this function to find map with the API ...of google"""
         self.adresse = self.send()
-        adresse=self.adresse['candidates'][0]['formatted_address']
+        adresse = self.adresse['candidates'][0]['formatted_address']
         URL = "https://maps.googleapis.com/maps/api/staticmap?"
-        center = 'center=' + adresse;
-        markers = '&markers=size:mid%7Ccolor:red%7CSan' + adresse;
+        center = 'center=' + adresse
+        markers = '&markers=size:mid%7Ccolor:red%7CSan' + adresse
         key = '&key=' + KEY_API
-        img_src = URL + center + '&zoom=12&size=400x200&maptype=roadmap'\
-                 + markers + key
+        img_src = URL + center + '&zoom=12&size=400x200&maptype=roadmap' +\
+                  markers + key
         return img_src

@@ -15,7 +15,7 @@
 ### https://grandpybotzebra385.herokuapp.com/
 ### Pour le développeur 
 ### Il faut s'enregistrer sur google pour recuperer une clé d'utilisation
-### Cette clé doit être à la ligne 24  et remplacer 
+### Cette clé doit être à la ligne 29  et remplacer 
 ### "YOUR own key for API Google" 
 ### l'éxécution se fera sur la console via le fichier GrandPyBot.py 
 ### Puis on ouvre son navigateur et on va sur l'adresse indiquée :

@@ -6,7 +6,6 @@ import os
 app = Flask(__name__)
 
 
-
 @app.route('/')
 @app.route('/GrandPyBot')
 def accueil():
@@ -20,6 +19,7 @@ def find_site():
     question = Question_Place(text_input)
     response = question.send()
     return jsonify(response)
+
 
 @app.route('/map', methods=['POST'])
 def map():
@@ -37,6 +37,7 @@ def find_article():
     article = Article_Wiki(text_input2)
     retour = article.get_article()
     return retour
+
 
 @app.route('/favicon.ico')
 def favicon():
