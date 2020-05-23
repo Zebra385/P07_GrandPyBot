@@ -17,17 +17,15 @@ def read_values_from_json(file):
 
 dictionnaire_words = read_values_from_json('words.json')
 
-count = 0
-for key in os.environ:
-    if key == 'API_KEY':
-        """Secret Key import to variable in environnement in production """
-        count = 1
+ENV = os.environ.get('ENV', 'DEBUG')
+if ENV == 'PRODUCTION':
+    API_KEY = os.environ['API_KEY']
 
-if count == 1:
-    KEY_API = os.environ['API_KEY']
 else:
-    """Secret Key for développement"""
-    KEY_API = "YOUR own key for API Google"
+    """ Secret Key import to variable file config.py in développement"""
+    import config
+    API_KEY = config.API_KEY
+
 
 
 class Question_Place():
@@ -80,7 +78,7 @@ class Question_Place():
             "input": self.site,
             "inputtype": "textquery",
             "fields": "formatted_address,name,geometry",
-            "key": KEY_API
+            "key": API_KEY
         }
         r = requests.post(url=URL, params=PARAMS)
         return r.json()
@@ -93,7 +91,7 @@ class Question_Place():
         URL = "https://maps.googleapis.com/maps/api/staticmap?"
         center = 'center=' + adresse
         markers = '&markers=size:mid%7Ccolor:red%7CSan' + adresse
-        key = '&key=' + KEY_API
+        key = '&key=' + API_KEY
         img_src = URL + center + '&zoom=12&size=400x200&maptype=roadmap' +\
                   markers + key
         return img_src
