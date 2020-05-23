@@ -16,17 +16,14 @@ def read_values_from_json(file):
 
 dictionnaire_words = read_values_from_json('words.json')
 
+
 if 'API_KEY' is  None:
-    """ Secret Key import to variable file config.py in développement"""
-    API_KEY = os.environ['API_KEY']
-
-else:
     """ Secret Key import to variable in environnement in production """
+    API_KEY = os.environ['API_KEY']
+else:
+    """ Secret Key import to variable file config.py in développement"""
     import config
-
     API_KEY = config.API_KEY
-
-
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
