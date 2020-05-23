@@ -1,28 +1,28 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
-import requests, os
-import json
-# import config only for developement
+import requests, os, json
+
 
 
 def read_values_from_json(file):
     """    We fill a array like a dictionnary with a json file     """
-    values = []#create a list
-    with open(file) as f:# open a json file with my objects
-        data = json.load(f) # load all the data contained in this file f
-        for entry in data:# Create a new empty list
-            values.append(entry)# add each item in my list
-    return values # return my completed list
+    values = []  # Create a list
+    with open(file) as f:  # open a json file with my objects
+        data = json.load(f)  # load all the data contained in this file f
+        for entry in data:  # Create a new empty list
+            values.append(entry)  # add each item in my list
+    return values  # return my completed list
 
 dictionnaire_words=read_values_from_json('words.json')
 
-""""Only in developpement you use the if condition"""
-# if 'API_KEY' is not None:
-""" Secret Key import to variable file config.py in developpement"""
-#    API_KEY= config.API_KEY
-#else:
-""" Secret Key import to variable in environement in production """
-API_KEY =os.environ['API_KEY']
+
+if 'API_KEY' is not None:
+    """ Secret Key import to variable file config.py in développement"""
+    import config
+    API_KEY = config.API_KEY
+else:
+    """ Secret Key import to variable in environnement in production """
+    API_KEY = os.environ['API_KEY']
 
 class Question_Place():
     """We def this class to looking for adresse of the site"""
@@ -39,7 +39,7 @@ class Question_Place():
         b = "!@#$?,123456789'<>"
         for char in b:
             self.question = self.question.replace(char, " ")
-            #We make a list of words  with our question
+            #  We make a list of words  with our question
         return self.question.split()
 
 
@@ -50,8 +50,9 @@ class Question_Place():
 
         self.tableau_site = self.tableau_question_racourcie
         site = ""
-        # We looking for the length the array
-        # If the word is in the dictionnary we remove this word in the dictionnary
+        #  We looking for the length the array
+        #  If the word is in the dictionnary we remove this word in
+        #  the dictionnary
         length_tableau = len(self.tableau_question_racourcie)
         if length_tableau == 1:
 
@@ -59,16 +60,10 @@ class Question_Place():
 
         else:
             for word in dictionnaire_words:
-
                 for word_question in self.tableau_question_racourcie:
-
-
                     if word_question == word:
-
                         self.tableau_site.remove(word_question)
-
             i = 0
-
             while i < len(self.tableau_question_racourcie):
                 site = site + str(self.tableau_site[i]) + " "
                 i = i + 1
@@ -84,7 +79,7 @@ class Question_Place():
             "inputtype": "textquery",
             "fields": "formatted_address,name,geometry",
             "key": API_KEY
-        }
+            }
         r = requests.post(url=URL, params=PARAMS)
         return r.json()
 
@@ -96,6 +91,7 @@ class Question_Place():
         URL = "https://maps.googleapis.com/maps/api/staticmap?"
         center = 'center=' + adresse;
         markers = '&markers=size:mid%7Ccolor:red%7CSan' + adresse;
-        key = '&key=' +  API_KEY
-        img_src =URL  + center + '&zoom=12&size=400x200&maptype=roadmap' + markers + key
+        key = '&key=' + API_KEY
+        img_src = URL + center + '&zoom=12&size=400x200&maptype=roadmap'\
+                 + markers + key
         return img_src
