@@ -3,13 +3,15 @@ $(function() {
     // No Key all is secret
     var $f =  ($('#question'));
     function search_question(){
-            var min=1;
-            var max=4;
-            var random = Math.floor(Math.random() * (max - min)) + min;
+            var min = 1;
+            var max = 5;
+            var random = Math.floor(Math.random() * (max - min)) ;
+            //Math.floor(x) get a bigger integer that is more little or egal to a number x.
             var arr = ['Mais t ai-je déjà raconté l\' histoire de ce quartier qui m\' a vu en culottes courtes ?',
                         'Je suis un brin admiratif pour t\'ajouter cet article sur ce quartier :',
-                        'Ne t\'en vas pas dèjà car je te rajoute un peu d\'histoire: ',
-                        'Attends un peu je n\'ai pas fini, voici l\'histoire de ce quartier :'];
+                        'Ne t\'en vas pas déjà car je te rajoute un peu d\'histoire: ',
+                        'Attends un peu je n\'ai pas fini, voici l\'histoire de ce quartier :',
+                        'Mais t ai-je déjà raconté l\' histoire de ce quartier qui m\' a vu en culottes courtes ?'];
 
             return arr[random] // Return one of the four sentences
             };
@@ -54,7 +56,7 @@ $(function() {
                             //we write the answer in windows
                             $r.append('Bien sûr mon poussin ! La voici l\' adresse de '+ site_question + ': ' + adresse);
                             $r.append('\r\n');
-                            $r.append(' Et je suis si gentils que je  te l\' indique sur la carte ci dessous . ');
+                            $r.append('Et je suis si gentil que je  te l\' indique sur la carte ci dessous . ');
                             $r.append('\r\n');
                             //we write a sentence to describe the history of this site
                             $r.append(question_papy);
@@ -95,6 +97,8 @@ $(function() {
                                         var article = data
                                         // we add the article in the windows
                                         $r.append(article);
+                                        $r.append('\r\n');
+                                        $r.append('\r\n');
                                                         },
                                 error: function(){
                                     $r.append('Désolé je n\'ai pas trouvé d\'article sur ce  site!');

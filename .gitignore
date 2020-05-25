@@ -1,7 +1,6 @@
 venv/
 .idea/
 .pytest_cache
-
 htmlcov
 .env
 testscd..
