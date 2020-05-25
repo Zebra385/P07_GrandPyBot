@@ -11,7 +11,7 @@ $(function() {
                         'Je suis un brin admiratif pour t\'ajouter cet article sur ce quartier :',
                         'Ne t\'en vas pas déjà car je te rajoute un peu d\'histoire: ',
                         'Attends un peu je n\'ai pas fini, voici l\'histoire de ce quartier :',
-                        'Mais t ai-je déjà raconté l\' histoire de ce quartier qui m\' a vu en culottes courtes ?'];
+                        'Mais t\'ai-je déjà raconté l\' histoire de ce quartier qui m\' a vu en culottes courtes ?'];
 
             return arr[random] // Return one of the four sentences
             };
@@ -56,7 +56,7 @@ $(function() {
                             //we write the answer in windows
                             $r.append('Bien sûr mon poussin ! La voici l\' adresse de '+ site_question + ': ' + adresse);
                             $r.append('\r\n');
-                            $r.append('Et je suis si gentil que je  te l\' indique sur la carte ci dessous . ');
+                            $r.append('Et je suis si gentil que je  te l\' indique sur la carte ci-dessous . ');
                             $r.append('\r\n');
                             //we write a sentence to describe the history of this site
                             $r.append(question_papy);
