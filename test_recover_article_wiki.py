@@ -2,13 +2,6 @@ import Program.recover_article_wiki as script
 import requests
 
 
-class TestArticle:
-    article = script.Article_Wiki('7 Cité Paradis, 75010 Paris, France')
-
-    def test_get_site(self):
-        self.get_site = 'Cité Paradis'
-        assert self.get_site == 'Cité Paradis'
-
 
 # custom class to be the mock return value
 # will override the requests.Response returned from requests.get

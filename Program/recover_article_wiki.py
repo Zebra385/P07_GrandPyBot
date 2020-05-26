@@ -29,25 +29,25 @@ class Article_Wiki():
     def get_pageid(self):
         """we def this function to find the page id of site wiki
         to the find adresse"""
-        URL = "https://fr.wikipedia.org/w/api.php"
+        url = "https://fr.wikipedia.org/w/api.php"
         self.site = self.get_site()
-        PARAMS = {
+        params = {
             "action": "query",
             "format": "json",
             "list": "search",
             "srsearch": self.site
         }
-        R = requests.post(url=URL, params=PARAMS)
-        DATA = R.json()
-        if DATA['query']['search'][0]['title'] == self.site:
-            self.pageid = DATA['query']['search'][0]['pageid']
-        return DATA['query']['search'][0]['pageid']
+        r = requests.post(url=url, params=params)
+        data = r.json()
+        if data['query']['search'][0]['title'] == self.site:
+            self.pageid = data['query']['search'][0]['pageid']
+        return data['query']['search'][0]['pageid']
 
     def get_article(self):
         """we def this function to find the article detected from pageid"""
         self.pageid = self.get_pageid()
-        URL = "https://fr.wikipedia.org/w/api.php"
-        PARAMS2 = {
+        url = "https://fr.wikipedia.org/w/api.php"
+        params = {
             "action": "query",
             "format": "json",
             "prop": "extracts",
@@ -57,7 +57,7 @@ class Article_Wiki():
             "explaintext": 1
         }
 
-        R2 = requests.get(url=URL, params=PARAMS2)
-        DATA2 = R2.json()
-        extract = DATA2['query']['pages'][str(self.pageid)]['extract']
+        r = requests.get(url=url, params=params)
+        data = r.json()
+        extract = data['query']['pages'][str(self.pageid)]['extract']
         return extract

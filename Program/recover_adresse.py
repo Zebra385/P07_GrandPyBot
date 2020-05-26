@@ -5,17 +5,23 @@ import os
 import requests
 
 
-def read_values_from_json(file):
-    """    We fill a array like a dictionnary with a json file     """
-    values = []  # Create a list
-    with open(file) as f:  # open a json file with my objects
-        data = json.load(f)  # load all the data contained in this file f
-        for entry in data:  # Create a new empty list
-            values.append(entry)  # add each item in my list
-    return values  # return my completed list
+class Parser():
+    """ we def a class to parser the question"""
+
+    def __init__(self, file):
+        self.file = file
+
+    def read_values_from_json(self):
+        """    We fill a array like a dictionnary with a json file     """
+        values = []  # Create a list
+        with open(self.file) as f:  # open a json file with my objects
+            data = json.load(f)  # load all the data contained in this file f
+            for entry in data:  # Create a new empty list
+                values.append(entry)  # add each item in my list
+        return values  # return my completed list
 
 
-dictionnaire_words = read_values_from_json('words.json')
+
 
 ENV = os.environ.get('ENV', 'DEBUG')
 if ENV == 'PRODUCTION':
@@ -35,11 +41,13 @@ class Question_Place():
         self.question = question
         self.site = self.recover_site()
 
+
+
     def cut_question(self):
         # we split the question
         self.question = self.question.lower()  # on met tout en minuscule
         # We take  off all characters no words
-        b = "!@#$?,123456789'<>"
+        b = "!@#$?,123456789'<>\""
         for char in b:
             self.question = self.question.replace(char, " ")
             #  We make a list of words  with our question
@@ -47,6 +55,8 @@ class Question_Place():
 
     def recover_site(self):
         """we def this function to find site in the question"""
+        parser = Parser('words.json')
+        dictionnaire_words = parser.read_values_from_json()
         self.tableau_question_racourcie = self.cut_question()
         self.tableau_site = self.tableau_question_racourcie
         site = ""
@@ -72,15 +82,15 @@ class Question_Place():
     def send(self):
         self.site = self.recover_site()
         """we def this function to find adresse with the API Place of google"""
-        URL = "https://maps.googleapis.com/maps/api/" \
+        url = "https://maps.googleapis.com/maps/api/" \
               "place/findplacefromtext/json"
-        PARAMS = {
+        params = {
             "input": self.site,
             "inputtype": "textquery",
             "fields": "formatted_address,name,geometry",
             "key": API_KEY
         }
-        r = requests.post(url=URL, params=PARAMS)
+        r = requests.post(url=url, params=params)
         return r.json()
 
     def map(self):
@@ -88,10 +98,10 @@ class Question_Place():
         """we def this function to find map with the API ...of google"""
         self.adresse = self.send()
         adresse = self.adresse['candidates'][0]['formatted_address']
-        URL = "https://maps.googleapis.com/maps/api/staticmap?"
+        url = "https://maps.googleapis.com/maps/api/staticmap?"
         center = 'center=' + adresse
         markers = '&markers=size:mid%7Ccolor:red%7CSan' + adresse
         key = '&key=' + API_KEY
-        img_src = URL + center + '&zoom=12&size=400x200&maptype=roadmap' +\
+        img_src = url + center + '&zoom=12&size=400x200&maptype=roadmap' +\
                   markers + key
         return img_src

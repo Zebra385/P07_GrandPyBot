@@ -6,7 +6,10 @@ body { background-image : url("../images/neige.jpg");
 .container{
 background-color: rgba(0, 0, 0, 0.1)
 }
-.form-result{ width: 100%;  padding-right: 15px;  padding-left: 15px; height : 250px;}
+.form-result{ width: 100%;  padding-right: 15px;  padding-left: 15px; height:250px; }
+textarea{
+overflow: hidden;
+}
 img, #map { max-width: 100%;height: auto;max-height : 100%; }
 header
 {
@@ -20,13 +23,11 @@ font-size: 1.2em;
 }
 #question-reponse{
 background : white;
-
+height:auto;
 box-shadow: 6px 6px 6px black inset;
 }
 
-#question{
-display: block;
-}
+
 #question_chargement,#question_chargement2{
 display: none;
 }

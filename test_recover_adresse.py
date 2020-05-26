@@ -1,16 +1,6 @@
 import Program.recover_adresse as script
 import requests
 
-
-class TestRecoverAdresse:
-    question = script.Question_Place('Salut GrandPy ! Est-ce que tu connais'
-                                     ' l\'adresse de le louvre')
-
-    def test_recover_site(self):
-        self.recover_site = 'le louvre'
-        assert self.recover_site == 'le louvre'
-
-
 # custom class to be the mock return value
 # will override the requests.Response returned from requests.get
 class MockResponse:
