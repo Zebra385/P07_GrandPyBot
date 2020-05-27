@@ -3,13 +3,10 @@ $(function() {
     // No Key all is secret
     var $f =  ($('#champ'));
     // function to adapted the dimension of the textarea
-    $('body').on('keyup input','textarea', function(){
-        var offset = this.offsetHeight - this.clientHeight;
-        var scroll = $('body').scrollTop();
-        $(this).css('height','auto').css('height', this.scrollHeight + offset);
-        $('body').scrollTop(scroll);
-        }).removeAttr('data-autoresize');
+    var $r = $('#champ_question_reponse');
+    var count=0;
 
+    //function to make a new random question
     function search_question(){
             var min = 1;
             var max = 5;
@@ -23,29 +20,25 @@ $(function() {
 
             return arr[random] // Return one of the four sentences
             };
-    const regex1 = /<script>/gi;
+    const regex1 = /<script>/gi;// to do not a mistake XSS
     const regex2 = /<\/script>/gi;
 
 
     $f.keypress(function(e){
+
         if( e.which == 13 ){
             e.preventDefault();
-            var $r = $('#champ_question_reponse');
+            count += 1;// we use a count to star a automatic sroll after the first answer
+
             var $i = $('#map');
             $r.append('\r\n');
-
-
-            $f.hide();// we erase the button "envoyer"
             $('#question_chargement').show(); // we show a turn icone durind the loading
             $('#question_chargement2').show();
 
             var question = $('#champ').val();
             question = question.replace(regex1,"");
             question = question.replace(regex2,"");
-            $r.append(question);
-
-
-
+            $r.append(question);// the question avoid XSS flaw
 
             $r.append('\r\n');// return at the new ligne
             var question_json= {'text':question,};
@@ -81,7 +74,6 @@ $(function() {
                                 }
 
                         if (adresse != "")
-
                                     {
                                     // we look for a map with adresse
                                     $.ajax({
@@ -114,9 +106,7 @@ $(function() {
                                             var article = data
                                             // we add the article in the windows
                                             $r.append(article);
-                                            $r.append('\r\n');
-                                            $r.append('\r\n');
-                                                            },
+                                            },
                                     error: function(){
                                         $r.append('Désolé je n\'ai pas trouvé d\'article sur ce  site!');
                                         $r.append('\r\n');
@@ -131,22 +121,17 @@ $(function() {
                        $r.append('Essaye en une autre');
                 }
                 });
-                }
+                };
+
             setTimeout(function(){
             $('#question_chargement').hide();// we erase the button loading
             $('#question_chargement2').hide();
-            $f.show();   // we show again the button "envoyer'
+            if (count > 1){
+                $r.scrollTop($r[0].scrollHeight);// to make an automaticely scroll
+                }
             },2000);
         }
-
-
-
-
-
-
-
     });
-
 })
 
 

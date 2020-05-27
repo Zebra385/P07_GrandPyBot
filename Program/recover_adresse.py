@@ -21,8 +21,6 @@ class Parser():
         return values  # return my completed list
 
 
-
-
 ENV = os.environ.get('ENV', 'DEBUG')
 if ENV == 'PRODUCTION':
     API_KEY = os.environ['API_KEY']
@@ -33,15 +31,12 @@ else:
     API_KEY = config.API_KEY
 
 
-
 class Question_Place():
     """We def this class to looking for adresse of the site"""
 
     def __init__(self, question):
         self.question = question
         self.site = self.recover_site()
-
-
 
     def cut_question(self):
         # we split the question

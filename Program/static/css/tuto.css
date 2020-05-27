@@ -6,10 +6,9 @@ body { background-image : url("../images/neige.jpg");
 .container{
 background-color: rgba(0, 0, 0, 0.1)
 }
-.form-result{ width: 100%;  padding-right: 15px;  padding-left: 15px; height:250px; }
-textarea{
-overflow: hidden;
-}
+.form-result{
+ width: 100%;  padding-right: 15px;  padding-left: 15px; height:300px; }
+
 img, #map { max-width: 100%;height: auto;max-height : 100%; }
 header
 {
