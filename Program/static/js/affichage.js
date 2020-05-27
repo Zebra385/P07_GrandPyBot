@@ -106,6 +106,7 @@ $(function() {
                                             var article = data
                                             // we add the article in the windows
                                             $r.append(article);
+                                            $r.append('---------------------------------------');
                                             },
                                     error: function(){
                                         $r.append('Désolé je n\'ai pas trouvé d\'article sur ce  site!');
